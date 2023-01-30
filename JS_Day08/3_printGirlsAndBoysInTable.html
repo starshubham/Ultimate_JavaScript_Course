@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Ques-3 -->
+    <!-- From the given 2D array of girls & boys in a class, print all data in a Table with 2 rows. Girls in first row and boys in second. -->
+    
+    <table id="studentTable">
+        <tr>
+          <th>Girls</th>
+        </tr>
+        <tr>
+          <th>Boys</th>
+        </tr>
+      </table>
+      
+      <script>
+      const students = [
+        ["Alice", "Emily", "Sophie"],
+        ["Bob", "David", "John"]
+      ];
+      
+      var table = document.getElementById("studentTable");
+      
+      for (var i = 0; i < students.length; i++) {
+        var row = table.insertRow(i+1);
+        for (var j = 0; j < students[i].length; j++) {
+          var cell = row.insertCell(j);
+          cell.innerHTML = students[i][j];
+        }
+      }
+      </script>
+</body>
+</html>

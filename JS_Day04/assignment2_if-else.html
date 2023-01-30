@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If else</title>
+</head>
+
+<body>
+    <div>JS Assignment-2 if-else</div>
+
+    <script>
+        "use strict";
+
+        // Ques 1
+        // Any year is entered through the keyboard, write a program to determine whether the year is leap or not.
+
+        function checkLeapYear(year) {
+            if (isNaN(year)) {
+                console.log("Not a number. Please Enter a valid year")
+            }
+            else {
+                //three conditions to find out the leap year
+                if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
+                    console.log(year + ' is a leap year');
+                } else {
+                    console.log(year + ' is not a leap year');
+                }
+            }
+        }
+
+        // take input
+        // var year = prompt('Enter a year:');
+        // checkLeapYear(year);
+        checkLeapYear("1976");
+        // checkLeapYear("shubham");
+
+
+        // Ques 2
+        // If the three sides of a triangle are entered through the keyboard, write a program to check whether the triangle is valid or not. The triangle is valid if the sum of two sides is greater than the largest of the three sides.
+
+        function isValidTriangle(side1, side2, side3) {
+            if (side1 + side2 > side3 && side2 + side3 > side1 && side1 + side3 > side2) {
+                return "Is triangle valid = true";
+            } else {
+                return "Is triangle valid = false";
+            }
+        }
+        // var side1 = prompt("Enter First side of a triangle: ");
+        // var side2 = prompt("Enter Second side of a triangle: ");
+        // var side3 = prompt("Enter Third side of a triangle: ");
+        // console.log(isValidTriangle(side1, side2, side3));
+
+        console.log(isValidTriangle(3, 4, 5));
+        console.log(isValidTriangle(5, 12, 13));
+        console.log(isValidTriangle(7, 24, 25));
+        console.log(isValidTriangle(1, 1, 2));
+        console.log(isValidTriangle(2, 3, 6));
+
+
+        // Ques 3
+        // If the three sides of a triangle are entered through the keyboard, write a program to check whether the triangle is isosceles, equilateral, scalene or right angled triangle.
+
+        let a = parseFloat(prompt("Enter the length of the first side of a triangle: "));
+        let b = parseFloat(prompt("Enter the length of the second side of a triangle: "));
+        let c = parseFloat(prompt("Enter the length of the third side of a triangle: "));
+
+        if (a === b && b === c) {
+            console.log("This is an equilateral triangle.");  // ex - 6,6,6
+        } else if (a === b || b === c || a === c) {
+            console.log("This is an isosceles triangle.");    // ex - 6,6,8
+        } else if ((a * a + b * b === c * c) || (b * b + c * c === a * a) || (c * c + a * a === b * b)) {
+            console.log("This is a right-angled triangle.");  // ex - 3,4,5
+        } else {
+            console.log("This is a scalene triangle.");
+        }
+
+
+        // Ques 4
+        // A certain grade of steel is graded according to the following conditions:
+        // (i) Hardness must be greater than 50
+        // (ii) Carbon content must be less than 0.7
+        // (iii) Tensile strength must be greater than 5600
+        // The grades are as follows:
+        // Grade is 10 if all three conditions are met.
+        // Grade is 9 if conditions (i) and (ii) are met.
+        // Grade is 8 if conditions (ii) and (iii) are met.
+        // Grade is 7 if conditions (i) and (iii) are met.
+        // Grade is 6 if only one condition is met.
+        // Grade is 5 if none of the conditions are met.
+        // Write a program, which will require the user to give values of hardness, carbon content and tensile strength of the steel under consideration and output the grade of the steel.
+
+        let hardness = parseFloat(prompt("Enter the hardness of the steel: "));
+        let carbonContent = parseFloat(prompt("Enter the carbon content of the steel: "));
+        let tensileStrength = parseFloat(prompt("Enter the tensile strength of the steel: "));
+
+        let grade = 0;
+
+        if (hardness > 50 && carbonContent < 0.7 && tensileStrength > 5600) {
+            grade = 10;
+        } else if (hardness > 50 && carbonContent < 0.7) {
+            grade = 9;
+        } else if (carbonContent < 0.7 && tensileStrength > 5600) {
+            grade = 8;
+        } else if (hardness > 50 && tensileStrength > 5600) {
+            grade = 7;
+        } else if (hardness > 50 || carbonContent < 0.7 || tensileStrength > 5600) {
+            grade = 6;
+        } else {
+            grade = 5;
+        }
+
+        console.log("The grade of the steel is: " + grade);
+
+
+
+        // Ques 5
+        // A university has the following rules for a student to qualify for a degree with A as the main subject and B as the subsidiary subject:
+        // (a) He should get 55 percent or more in A and 45 percent or more in B.
+        // (b) If he gets less then 55 percent in A he should get 55 percent or more in B.
+        // However, he should get at least 45 percent in A.
+        // (c) If he gets less than 45 percent in B and 65 percent or more in A he is allowed to reappear in an examination in B to qualify. 
+        // (d) In all other cases he is declared to have failed.
+        // Write a program to receive marks in A and B and Output whether the student has passed, failed or is allowed to reappear in B.
+
+        let marksA = parseFloat(prompt("Enter the marks in subject A: "));
+        let marksB = parseFloat(prompt("Enter the marks in subject B: "));
+
+        if (marksA >= 55 && marksB >= 45) {
+            console.log("Student has passed with A as main subject and B as subsidiary subject.");
+        } else if (marksA < 55 && marksA > 45 && marksB >= 55) {
+            console.log("Student has passed with A as main subject and B as subsidiary subject.");
+        } else if (marksA >= 65 && marksB < 45) {
+            console.log("Student is allowed to reappear in B subject.");
+        } else {
+            console.log("Student has failed to qualify for a degree.");
+        }
+
+    </script>
+</body>
+
+</html>

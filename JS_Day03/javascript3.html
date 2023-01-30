@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container">
+          <h1 id="h1">JavaScript Functions</h1>
+          <p>Paragraph</p>
+          <form action="" class="mb-3">
+               <label><input required type="search" name="search"></label> <button class="btn btn-primary">Search</button>
+          </form>
+          <a href="javascript:void(0)">Click</a>
+          <button class="btn btn-danger" onclick="alert('Hello')">Hi</button>
+          <button class="btn btn-danger" onclick="print()">Print</button>
+          <button class="btn btn-danger" onclick="console.log(sayHi())">Hello</button>
+          <button class="btn btn-danger" onclick="console.log(sayBye())">Bye</button>
+          <div class="mt-3">
+               <label>Amount: <input type="number" min="10000" step="5000" id="amount"></label> <button onclick="output.textContent=checkFd(amount.value)" class="btn btn-dark">Check</button> <span id="output"></span>
+          </div>
+     </div>
+<script>
+     "use strict";
+
+     const pi=Math.PI;
+     const e=Math.E;
+
+     function sayHi(){ return "hello"}                        // function declaration
+     let sayBye=function(){ return "bye"};                    // function expression
+     //let arr=(i,j)=>{return  i+j };                         // arrow function
+     //et arr=(i,j)=>i+j ;                                    // arrow function
+     let arr=i=>2*i;                                          // arrow function
+     
+     function checkFd(amount){
+          return +amount + (amount * 0.07);
+     }
+
+     //var a=alert(2+3);                                 // undefined
+
+
+     function mean(x=0,y=0,z=0){                               // parameters
+          //var x=2,y=3,z=4;                             // local variables
+          //x=x||0,y=y||0,z=z||0;                        // default parameters
+          var sum=x+y+z;
+          var m=sum/3;   
+          return m;
+     }
+     mean.id=33;                                                                // function property
+     mean.getId=function(){ return this.name + " id is "+ this.id };            // function method
+
+     //var t=mean();                             // undefined      (without return)      
+     var s=mean();                                // NaN 
+     var t=mean(1,2,3);                          // 2     
+     var u=mean(2,3,4);                          // 3     
+
+     
+    // console.log( typeof mean );                  // function
+    // console.log( typeof mean() );                // number
+
+
+     /*  function returns a function */     
+
+    function outer(a=1){
+          var x=3;
+          function inner(b=2){
+               var y=4;
+               return x+y+a+b;
+          }
+          return inner;                 // function returns a function
+    }
+
+     /*  Callback function -function passes as an parameter to another function */   
+     
+     
+     document.body.addEventListener("click",function(){ console.log(this); });
+     h1.addEventListener("click",function(){ console.log(this); });
+
+     setTimeout(console.log(1));                            // sync
+     setTimeout(function(){ console.log(2) });              // async
+
+
+     fetch("data.txt").then(i=>i.text()).then(i=>console.log(i));     // async
+     //fetch("footer.html").then(i=>i.text()).then(i=>console.log(i));     // async
+     //fetch("https://api.github.com/users/avimalhotra").then(i=>i.json()).then(i=>console.table(i));     // async
+
+     let arr1=[1,2,3];
+     let arr2=arr1.map(i=>2*i);                        // sync
+     console.log(arr1, arr2);
+
+
+     function newYearParty(year,call1,ar1,call2,ar2){
+          console.log(`happy New Year ${year}`); 
+          call1(ar1);
+          call2(ar2);
+     }
+
+     function bookFood(app){
+          console.log(`food booked through ${app}`);
+     }
+     function playMusic(app){
+          console.log(`Playing music through ${app} App`);
+     }
+
+
+     //newYearParty(2023,bookFood,"Zomato",playMusic,"Amazon Music");                            // sync callbacks
+     //setTimeout(function(){newYearParty(2023,bookFood,"Zomato",playMusic,"Amazon Music");});     // async
+
+
+     console.log("App Sync");
+</script>   
+</body>
+</html>

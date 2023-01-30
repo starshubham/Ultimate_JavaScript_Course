@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          .btn:disabled{ pointer-events: initial;cursor: not-allowed;}
+          .loader{ top: 200px; display: none; }
+     </style>
+</head>
+<body>
+     <!-- JavaScript constructor, JS Class, JS Promise, Async and Await function, JS Destructuring, Spread Operator, Rest Parameters -->
+     <div class="container">
+          <header class="bg-light p-3">
+               <h1>JavaScript <i>Array</i></h1>
+          </header>
+          <nav class="bg-info py-2">
+               <a href="api.html">API</a>
+               <a href="clock.html">Clock</a>
+          </nav>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+          </main>
+          <footer class="bg-info p-3">
+               
+          </footer>
+     </div>
+<script>
+     "use strict";
+
+    /*  function Car(name, power, weight){
+          this.name=name;
+          this.power=power;
+          this.weight=weight;
+     } */
+
+     //const Bike=class{};
+
+     class Car{
+          constructor(name, power, weight){
+               this.name=name;
+               this.power=power;
+               this.weight=weight;
+          }
+
+          start(){ console.log(`${this.name} starts`)}
+          get powerToWeight(){ return `${this.power/this.weight * 1000}`}
+
+          static emission="bs6";                  // property of class
+
+     }
+     //Car.prototype.brand="Maruti Suzuki";
+
+     class Suzuki extends Car{
+          constructor(name, power, weight){
+               super(name, power, weight)
+          }
+     }
+     class Toyota extends Car{
+          constructor(name, power, weight){
+               super(name, power, weight)
+          }
+     }
+
+
+     let swift=new Suzuki("swift",90,875);
+     let baleno=new Suzuki("baleno",90,950);
+     let hyryder=new Toyota("hyryder",115,1150);
+     
+     //for( let i in swift){console.log(i, swift[i]);}
+
+
+
+    /* const promise=new Promise((resolve,reject)=>{
+          resolve();
+          reject();
+     });
+     promise.then(i=>console.log('done')).then(i=>console.log('done again',j)).catch(i=>console.warn("error"));
+     */
+
+     /* {
+          let x=Promise.resolve('hello');
+          x.then(i=>console.log(i));                   // async
+
+          let y=3;
+          console.log(y);                              // sync
+     }
+      */
+
+
+     // function async(){
+     //      return Promise.resolve(1);                          // Promise
+     // }
+
+    /*  async function async(){
+          return 1;                          // Promise
+     } */
+
+     async function runAsync(){
+
+          let res=function(){
+               return setTimeout(function(){
+                    console.log("after 1 sec");
+               },1000)
+          };
+
+          let data=await res;
+          
+          data();
+
+          console.log("function called");
+
+     }
+     //runAsync();
+
+
+
+     const arr=[3,9,2];
+     const user={name:"aaa",id:22,age:44};
+     //const x=arr[0],y=arr[1];
+
+     const [x,y,z]=arr;
+     const {name="",id=0,age=0}=user;
+
+     let [a,b]=[3,5];                             // a=3, b=5
+     [b,a]=[a,b];
+
+
+     function add(x1,x2,x3){
+          return x1+x2+x3;
+     }
+
+     let num=[5,8,9,22,3];
+     //let min=Math.min.apply(null,num);
+     let min=Math.min(...num);
+     //let max=Math.max.apply(null,num);
+     let max=Math.max(...num);
+
+     console.log( add(...num) );
+
+
+     const address={city:"noida",pin:201301};
+     const person={ name:"aaa", age:22,...address};
+     //const person={ name:"aaa", age:22,add:{...address}};
+
+
+     function getArray(...arg){
+          return arg
+     }
+
+
+
+
+
+      
+     console.log("App Running");
+</script>   
+</body>
+</html>

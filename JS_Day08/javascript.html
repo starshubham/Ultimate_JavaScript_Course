@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          :disabled{ cursor: not-allowed;}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <header class="bg-light p-3">
+               <h1>JavaScript <i>Array</i></h1>
+          </header>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+               <!-- <ol></ol> -->
+               <select><option value="" disabled selected>--Choose Month--</option></select>
+               <div class="list"></div>
+               <table class="table table-bordered"><tbody></tbody></table>
+               <div class="data"></div>
+          </main>
+          <footer class="bg-info p-3">
+               <p>&copy; 2023</p>
+          </footer>
+     </div>
+<script>
+     "use strict";
+
+     //const data=new Array("a","b");                              // constructor
+
+     const user={name:"aaa",age:22};                                // object literal
+     const data=["jan","feb","mar","apr","jan"];                          // literal (6)
+     const nums=[1,9,4,3,7,22,10];
+
+     // //document.querySelector("p").innerHTML=data
+     // document.querySelector("p").innerHTML+=data
+     // console.log(data);
+     // console.log(Array.isArray(data));
+     // console.log(data[0]);
+     // console.log(data[data.length-1]);
+     
+
+     
+     //nums.sort(function(a,b){return a-b});
+     // nums.sort((a,b)=>a-b);
+     // data.reverse();
+
+     // console.log( data.indexOf("jan") );
+     // console.log( data.lastIndexOf("jan") );
+    
+     // console.log(data.shift());                           // "jan"
+     //data.unshift("AAA");                      // 5
+     //data.pop();                                // "apr"
+     //data.push("zzz");                          // 5   
+     // data.splice(1,2);
+     // data.splice(0,1,"JAN");
+     // data.splice(0,0,"JAN","FEB");
+     // data.splice(1,1,"FEB");
+
+
+     // console.log(data.slice(1,4));
+
+
+     //data.forEach(i=>console.log(i));                                   // i is element
+     //data.forEach((elem,ind)=>console.log(ind,elem));                   // ind is index, elem is element
+     
+     //const data1 = data.map(i=>i.toUpperCase());
+     //const data1 = nums.map(i=>i*2);
+     //const data1 = nums.reduce((i,j)=>i+j);
+     //const data1 = nums.filter(i=>i%2==0);
+     //const data1 = nums.find(i=>i>=10);
+     //const data1 = nums.find(i=>i%2==0);
+     //const data1 = nums.findIndex(i=>i%2==0);
+
+     //nums.fill(0);
+     //nums.fill(0,2,4);
+     //nums.some(i=>i>=10);
+     //nums.every(i=>i>=10);
+
+
+     //const bigData=[data,nums];
+     const bigData=[
+          ["a1","a2","a3","a4","a5"],
+          ["b1","b2","b3","b4"],
+          ["c1","c2","c3","d4","d5"],
+     ];
+
+
+     //data.forEach(elem=>document.querySelector("ol").innerHTML+=`<li>${elem}</li>`);  
+     //data.forEach((elem,ind)=>document.querySelector(".list").innerHTML+=`<p> ${ind+1} - ${elem}</p>`);  
+     //data.forEach(elem=>document.querySelector("select").innerHTML+=`<option> ${elem}</option>`);  
+
+     //for(let i in data){console.log(i, data[i])}
+     //for(let i of data){console.log(i)}
+
+     //for( let i=0; i<data.length/2; i++){console.log(i,data[i]);}
+
+     // bigData.forEach(i=>{
+     //      let tr=document.createElement("tr");
+     //      i.forEach(j=>{
+     //           tr.innerHTML+=`<td>${j}</td>`;
+     //      })
+     //      document.querySelector(".table tbody").appendChild(tr);
+     // });
+     bigData.forEach(i=>{
+          let row=document.createElement("div");            // 3
+          row.classList.add("row");
+          i.forEach(j=>{                                    // ?
+               row.innerHTML+=`<div class="col-auto">${j}</div>`;
+          })
+          document.querySelector(".data").appendChild(row);
+     });
+
+    
+    
+</script>   
+</body>
+</html>

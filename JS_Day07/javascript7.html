@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          :disabled{ cursor: not-allowed;}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <header class="bg-light p-3">
+               <h1>JavaScript <i>Loops</i></h1>
+          </header>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+               <div class="row">
+                    <div class="col-auto">
+                         <select class="form-select year"><option value="" selected disabled>--Choose Year--</option></select>
+                    </div>
+                    <div class="col-auto">
+                         <select disabled class="form-select month"><option value="" selected disabled>--Choose Month--</option></select>
+                    </div>
+                    <div class="col-auto">
+                         <select disabled class="form-select date"><option value="" selected disabled>--Choose Date--</option></select>
+                    </div>
+               </div>
+               <h2>Table</h2>
+               <table class="table table-bordered"><tbody></tbody></table>
+               <div class="alert alert-secondary text-center"><div id="output1"></div></div>
+               <div class="alert alert-secondary text-center ship"></div>
+          </main>
+          <footer class="bg-info p-3">
+               <p>&copy; 2023</p>
+          </footer>
+          
+     </div>
+<script>
+     "use strict";
+    
+     let i=1;
+
+     // while( i<=10 ){
+     //      console.log(i);
+     //      i++;
+     // }
+
+     // do{
+     //      console.log(i);
+     //      i++;
+     // }
+     // while(i<=10) 
+
+     // for( let i=1; i<=10; i++ ){                  // 10
+     //      console.log(i);
+     // }
+
+
+     // for( let i=1; i<=100; i++ ){                      // 100         
+     //      if( i%10==0){ console.log(i);}               // 10
+     // } 
+
+     // for( let i=10; i<=100; i=i+10 ){                   // 10       
+     //      console.log(i);                               // 10
+     // } 
+
+
+     // for( let i=100; i<=200; i++ ){                    // 101       
+     //      if( i%13==0 ){ console.log(i); break}        //                                
+     // } 
+
+     // let counter=0;
+     // for( let i=100; i<=200; i++ ){                    // 101       
+     //      if( i%7==0 ){ console.log(counter++)}        //  14                     
+     // } 
+
+     // for( let i=100; i<=200; i++ ){                    // 101       
+     //      if( i%13==0 ){ continue }                    // skip values divisable by 13 like 104, 117
+     //      console.log(i);                                      
+     // } 
+
+     
+     console.time("time");
+     let data="";
+     for( let i=0; i<=new Date().getFullYear(); i++ ){                          // 2024
+          //console.log(i);
+          //document.querySelector('.year').innerHTML+=`<option>${i}</option>`;
+          data+=`<option>${i}</option>`;
+     }
+     document.querySelector('.year').innerHTML+=data;
+
+    
+     console.timeEnd("time");
+
+     document.querySelector(".year").addEventListener("change",function(){
+          document.querySelector(".month").removeAttribute("disabled");
+          document.querySelector(".month").innerHTML=`<option selected disabled value="">--Choose Month--</option>`;
+
+          for( let i=1; i<=12; i++){
+               document.querySelector(".month").innerHTML+=`<option>${i}</option>`;
+          }   
+          document.querySelector(".month").focus();
+     });
+
+     document.querySelector(".month").addEventListener("change",function(){
+          document.querySelector(".date").removeAttribute("disabled");
+          document.querySelector(".date").innerHTML=`<option selected disabled value="">--Choose Date--</option>`;
+          
+          const year=document.querySelector(".year").value;
+          const month=this.value;
+          let t=31;                               // 28-31
+
+          for( let i=1; i<=t; i++){
+               document.querySelector(".date").innerHTML+=`<option>${i}</option>`;
+          }   
+          document.querySelector(".date").focus();
+     });
+     
+
+     /* nested loop */
+
+     for( let i=1; i<=10; i++ ){                  // 10
+          for( let j=1; j<=10; j++){              // 10
+               //console.log(i*j);                       // 100
+          }
+     }
+
+     for( let i=1; i<=10; i++ ){                       // 10
+          const tr=document.createElement("tr");
+          for( let j=1; j<=10; j++){                   // 10
+               tr.innerHTML+=`<td> ${i*j} </td>`;       // 100
+          }
+          document.querySelector(".table tbody").appendChild(tr);
+     }
+
+
+     for( let i=1; i<=10; i++ ){  
+          let counter = 0;                // 10
+          const div=document.createElement("div");
+          for( let j=1; j<=i; j++){              // i times
+               div.innerHTML+=` * `;
+               counter++;               
+          }
+          document.querySelector(".alert").appendChild(div);
+          console.log(counter)
+     }
+
+     for( let i=1; i<=100; i=i+i ){  
+          let counter = 0;                 // 7
+          const div=document.createElement("div");
+          for( let j=1; j<=i; j++){              // i times
+               div.innerHTML+=` * `;
+               counter++;
+          }
+          document.querySelector(".ship").appendChild(div);
+          div.innerHTML+=counter;
+          console.log(counter)
+     }
+
+
+
+
+
+
+     
+
+
+
+</script>   
+</body>
+</html>

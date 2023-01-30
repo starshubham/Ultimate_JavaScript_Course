@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #city-form {
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        #city-input {
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Get the weather of city using wheater map api -->
+    <script src="script.js"></script>
+    <form id="city-form">
+        <label for="city-input">City:</label>
+        <input type="text" id="city-input" name="city">
+        <button type="submit">Submit</button>
+    </form>
+
+    <table id="weather-table"></table>
+    </table>
+    <script>
+
+
+        const cityForm = document.getElementById('city-form');
+        cityForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const city = document.getElementById('city-input').value;
+            //console.log(city);
+            //var city = document.getElementById("city").value;
+            var apiKey = "7a56188149a1f613f4c3a9052f3d73e3";
+
+
+            var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // do something with the data
+                    console.log(data)
+                });
+            let waetherApiurl = "https://weather-map-api.com/forecast?q=" + city;
+            fetch(waetherApiurl)
+                .then(response => response.json())
+                .then(data => {
+                    // Get the table element
+                    let table = document.getElementById("weather-table");
+                    // Iterate over the data and create rows
+                    data.forecast.forEach(day => {
+                        let row = table.insertRow();
+                        let dateCell = row.insertCell();
+                        let tempCell = row.insertCell();
+                        let conditionCell = row.insertCell();
+                        dateCell.innerHTML = day.date;
+                        tempCell.innerHTML = day.temp;
+                        conditionCell.innerHTML = day.condition;
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>

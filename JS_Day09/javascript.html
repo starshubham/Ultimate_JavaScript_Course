@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          :disabled{ cursor: not-allowed;}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <header class="bg-light p-3">
+               <h1>JavaScript <i>Array</i></h1>
+          </header>
+          <nav>
+               <a href="api.html">API</a>
+               <a href="clock.html">Clock</a>
+          </nav>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+
+               <button class="btn btn-primary users">Get Users</button>
+               <ul></ul>
+
+               <form action="/search" role="search" class="m-3">
+                    <div class="row">
+                         <div class="col-auto"> 
+                              <label> <input aria-label="Search" name="q" type="search" class="form-control" required placeholder="Search Here"></label></div>
+                         <div class="col-auto">
+                              <button type="submit" class="btn btn-info">Search</button>
+                         </div>
+                    </div>
+                    
+               </form>
+
+               <table class="table table-bordered">
+                    <thead><tr><th>Name</th><th>Type</th><th>Price</th></tr></thead>
+                    <tbody></tbody>
+               </table>
+          </main>
+          <footer class="bg-info p-3">
+               
+          </footer>
+     </div>
+<script>
+     "use strict";
+
+     Object.prototype.city="delhi";     
+     Object.prototype.pin="110001";     
+     // Array.prototype.numSort=function(){};        
+
+     const data=["jan","feb","mar","apr"];                     // array
+
+     //const user=new Object();                                // object literal
+     // user.name="aa";
+     // user.id=23;
+
+     const car={
+          name:"swift",
+          power:90,
+          torque:113,
+          weight:875,
+          powToWe:function(){ return +(this.power/this.weight * 1000).toFixed(2) },
+          torToWe:function(){ return +(this.torque/this.weight * 1000).toFixed(2) },
+     };
+
+     car.price=800000;
+     //car.power=88;
+     //delete car.weight;
+
+     //console.log(car);
+     //console.log(car instanceof(Object) );                      // reference datatype
+     //console.log(car instanceof(Object) && Array.isArray(data)==false && typeof(car)!="function" );       // Object
+
+     //document.querySelector(".data").innerHTML=car.name;
+     //document.querySelector(".data").innerHTML=car["on-road"];
+
+
+     for( let i in car){
+          //console.log(i, car[i]);                              // both own and inherited
+
+          if( car.hasOwnProperty(i)){                            // only own
+               if( typeof car[i]=="function" ){ 
+                    //console.log(i, car[i]() );
+                   // document.querySelector(".table tbody").innerHTML+=`<tr><td>${i}</td><td>${car[i]()}</td></tr>`;
+               }
+               else{  
+                    //console.log(i, car[i] )
+                   // document.querySelector(".table tbody").innerHTML+=`<tr><td>${i}</td><td>${car[i]}</td></tr>`;
+               }
+          }  
+
+          //if( Object.hasOwn(car,i)){ console.log(i)}            // only own in ES13
+          //else { console.warn(i)}                               // only inherited
+     }
+
+
+     // function method
+
+     /* function sayHi(x){
+          console.log(x.name);
+     }
+
+     sayHi({name:"aaa"}); */
+
+     /* function sayHi(){
+          console.log(this.name, this.id);
+     }
+
+     sayHi.call({name:"aaa",id:22});  */
+
+    /*  function sayHi(){
+          console.log(this.name, this.id);
+     }
+
+     let hi=sayHi.bind({name:"aaa",id:22}); 
+
+     hi(); */
+
+
+   /*  function sayHi(x,y){
+          console.log(this.name, x, y);
+     }
+
+     let user={name:"aaa"}
+     let cards=["card1","card2"];
+
+     sayHi.apply(user,cards); */
+
+     
+     /* JSON */
+
+     let x='[1,2,3]';
+     let y='{"name":"aaa"}';
+     
+     x=JSON.parse(x);
+     y=JSON.parse(y);
+
+     x=JSON.stringify(x);
+     y=JSON.stringify(y);
+
+
+     /* AJAX */
+
+     {
+     const req=new XMLHttpRequest();
+     req.open("get","data.txt");
+     req.send();                                                   // without payload
+     //req.send('name=aaa');                                                   // payload string
+     //req.send('name:aaa');                                                   // payload json
+     req.addEventListener("load",function(){console.log(req.response)});
+     }
+     
+     {
+     const req=new XMLHttpRequest();
+     req.open("get","footer.html");
+     req.send();                                                   
+     req.addEventListener("load",function(){document.querySelector('footer').innerHTML=req.response});
+     }
+
+     {
+     const req=new XMLHttpRequest();
+     req.open("get","data.json");
+     req.send();                                                   
+     req.addEventListener("load",function(){
+          let res=req.response;            // string
+          res=JSON.parse(res);
+          
+          res.forEach(i=>{
+               document.querySelector(".table tbody").innerHTML+=`<tr><td>${i.name}</td><td>${i.type}</td><td>${i.price}</td></tr>`;
+          });
+
+     });
+     }
+
+
+     // GITHUB API
+     document.querySelector(".users").addEventListener("click",function(){
+          const req=new XMLHttpRequest();
+          //req.open("get","https://api.github.com/users");
+          req.open("get","https://api.github.com/users/avimalhotra");
+          req.send();                                                   
+          req.addEventListener("readystatechange",function(){
+               //if( req.readyState==0){ console.log("unsent"); }
+               //else if( req.readyState==1){ console.log("open"); }
+               if( req.readyState==2){ console.log(this.status); }
+               else if( req.readyState==3){ console.log("loading"); }
+               else if( req.readyState==4 && this.status==200){
+                    let res=this.response;
+                    res=JSON.parse(res);
+
+                    if( Array.isArray(res) ){
+                         res.forEach(i=>{
+                         document.querySelector("main ul").innerHTML+=`<li>ID-${i.id}, Login-${i.login}</li>`
+                    });
+                    }
+                    else{
+                         for( let j in res){
+                              document.querySelector("main ul").innerHTML+=`<li>${j} --> ${res[j]}</li>`
+                         }
+                    }                   
+               }
+               else if( req.readyState==4 && this.status==404){
+                    console.warn("page not found");
+               }
+               else{
+                    console.warn("unknown error");
+               }
+          })
+     });
+     
+
+     
+     console.log("app running");
+    
+    
+</script>   
+</body>
+</html>

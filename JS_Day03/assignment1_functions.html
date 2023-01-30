@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Practice</title>
+</head>
+
+<body>
+    <div>Assignment-1 Functions </div>
+
+    <script>
+        // Ques 1. Add three numbers from variables in console.
+        function Add3Numbers(x = 0, y = 0, z = 0) {
+            add = x + y + z
+            return add;
+        }
+        // console.log(Add3Numbers())
+        console.log(Add3Numbers(4, 5, 6))
+
+
+        // Ques 2. Check mean of three numbers.
+        function Mean3Numbers(x = 0, y = 0, z = 0) {
+            add = x + y + z
+            mean = add / 3;
+            return mean;
+        }
+        console.log(Mean3Numbers(10, 12, 8))
+
+
+        // Ques 3. Calculate year from age.
+        function calculate_year(age) {
+            const currentYear = new Date().getFullYear();
+            const birthYear = currentYear - age;
+            console.log(birthYear);
+        }
+        calculate_year(25);
+
+        // function calculate_age(dob) {
+        //   //calculate month difference from current date in time
+        //   var month_diff = Date.now() - dob.getTime();
+
+        //   //convert the calculated difference in date format
+        //   var age_dt = new Date(month_diff);
+
+        //   //extract year from date    
+        //   var year = age_dt.getUTCFullYear();
+
+        //   //now calculate the age of the user
+        //   var age = Math.abs(year - 1970);
+
+        //   //display the calculated age
+        //   console.log("Age of the date entered: " + age + " years");
+        // }
+
+        // // calculate_age(new Date("11/4/1982"));
+        // calculate_age(new Date("12/23/1995"));
+
+
+        // Ques 4. Check Area of rectangle, square, circle.
+        function area_Rectangle_Square_Circle() {
+            let a = 6, b = 4, r = 7;
+            let pi = 22 / 7;
+
+            area_rectangle = a * b;
+            console.log("Area of Reactangle is: " + area_rectangle);
+
+            area_square = a * a;
+            console.log("Area of Square is: " + area_square);
+
+            area_circle = pi * r * r;
+            console.log("Area of Circle is: " + area_circle);
+        }
+
+        area_Rectangle_Square_Circle()
+
+
+        // Ques 5. Check Perimeter of rectangle and square.
+        function perimeter_Rectangle_Square() {
+            let a = 6, b = 4;
+
+            perimeter_rectangle = 2 * (a + b);
+            console.log("Perimeter of Reactangle is: " + perimeter_rectangle);
+
+            perimeter_square = 4 * a;
+            console.log("Perimeter of Square is: " + perimeter_square);
+
+        }
+
+        perimeter_Rectangle_Square()
+
+
+        // Ques 6. Calculate BMI of user using weight and height.
+        function calculate_BMI(weight, height) {
+
+            const bmi = weight / (height * height);
+            console.log(`BMI of the person whose weight ${weight} kg and height ${height} meters is ${bmi.toFixed(2)} kg/m2`);
+        }
+
+        calculate_BMI(80, 1.8)
+
+
+        // Ques 7. Convert Temperature in F to C.
+        function fahrenheit_to_celsius(fahrenheit) {
+            // const fahrenheit = 100;  // Temperature in Fahrenheit
+            const celsius = (fahrenheit - 32) * (5 / 9);
+            console.log(`${fahrenheit} degree fahrenheit = ${celsius.toFixed(2)} degree celsius`);
+        }
+
+        fahrenheit_to_celsius(100)
+
+
+        // Ques 8. Convert miles to kms.
+        function miles_to_kms(miles) {
+            let kms = (miles * 1.609).toFixed(2);
+            console.log(`${miles} miles = ${kms} kms`);
+        }
+
+        miles_to_kms(2);
+    </script>
+</body>
+
+</html>

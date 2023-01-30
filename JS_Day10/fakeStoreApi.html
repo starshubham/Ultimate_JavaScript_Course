@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fetch data from Api</h1>
+
+    <script src="script.js"></script>
+
+    <table id="product-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="product-table-body"></tbody>
+    </table>
+
+    <script>
+        fetch('https://fakestoreapi.com/products')
+            .then(res => res.json())
+            .then(data => {
+                // code to display data in table format goes here
+                const tableBody = document.getElementById("product-table-body");
+                data.forEach(product => {
+                    let row = document.createElement("tr");
+                    let name = document.createElement("td");
+                    name.innerHTML = product.name;
+                    let price = document.createElement("td");
+                    price.innerHTML = product.price;
+                    let description = document.createElement("td");
+                    description.innerHTML = product.description;
+                    row.appendChild(name);
+                    row.appendChild(price);
+                    row.appendChild(description);
+                    tableBody.appendChild(row);
+                });
+
+            });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select State and City</title>
+</head>
+
+<body>
+    <!-- Ques-2 -->
+    <!-- Write a programme to choose State and City names from two select dropdowns. First Choose State and then city. 
+    const state=['up', 'mp', 'hp', ‘delhi’]; 
+    const cities=[ ['noida', 'ghaziabad', ‘lucknow’], ['bhopal', ‘indore’], ['shimla', ‘manali’], ['north', 'south', 'central', 'west', 'east'] ]; -->
+    
+    <form>
+        <label for="states">Select State:</label>
+        <select id="states" onchange="updateCities()">
+            <option value="up">UP</option>
+            <option value="mp">MP</option>
+            <option value="hp">HP</option>
+            <option value="delhi">Delhi</option>
+        </select>
+        <br><br>
+
+        <label for="cities">Select City:</label>
+        <select id="cities">
+        </select>
+    </form>
+
+    <script>
+        const states = ['up', 'mp', 'hp', 'delhi'];
+        const cities = [
+            ['noida', 'ghaziabad', 'lucknow'],
+            ['bhopal', 'indore'],
+            ['shimla', 'manali'],
+            ['north', 'south', 'central', 'west', 'east']
+        ];
+
+        function updateCities() {
+            var state = document.getElementById("states").value;
+            var citySelect = document.getElementById("cities");
+            citySelect.innerHTML = "";
+
+            for (var i = 0; i < states.length; i++) {
+                if (states[i] === state) {
+                    for (var j = 0; j < cities[i].length; j++) {
+                        var option = document.createElement("option");
+                        option.value = cities[i][j];
+                        option.text = cities[i][j];
+                        citySelect.appendChild(option);
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

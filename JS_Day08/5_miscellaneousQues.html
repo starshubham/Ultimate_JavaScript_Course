@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="result">
+    <!-- Q6: Find max and min value from given array. [1, 9, 4, 2, 10, 50]. -->
+    <button onclick="findMaxMin()">Find Max and Min</button>
+    <p id="max"></p>
+    <p id="min"></p>
+
+    <!-- Q7: Find all even numbers from given array. [1, 9, 4, 2, 10, 50]. -->
+    <button onclick="findEven()">Find Even Numbers</button>
+    <p id="even"></p>
+
+    <!-- Q8: Find all prime numbers from given array. [1, 9, 4, 2, 10, 50]. -->
+    <button onclick="findPrime()">Find Prime Numbers</button>
+    <p id="prime"></p>
+
+    <!-- Q9: Create a new array with double values from given array. [1, 9, 4, 2, 10, 50]. -->
+    <button onclick="doubleValues()">Double Values</button>
+    <p id="doubles"></p>
+
+    <!-- Q10: Create a new array with factors of 10 only from given array. [1, 9, 4, 2, 10, 50]. -->
+    <button onclick="findFactors()">Find Factors of 10</button>
+    <p id="factors"></p>
+
+    
+    <script>
+        // Ques-6
+        const numbers = [1, 9, 4, 2, 10, 50];
+
+        function findMaxMin() {
+            const max = Math.max(...numbers);
+            const min = Math.min(...numbers);
+
+            document.getElementById("max").innerHTML = "Maximum value is: " + max;
+            document.getElementById("min").innerHTML = "Minimum value is: " + min;
+        }
+
+        // Ques-7
+        function findEven() {
+            let evenNumbers = numbers.filter(num => num % 2 === 0);
+
+            document.getElementById("even").innerHTML = "Even Numbers: " + evenNumbers.join(", ");
+        }
+
+        // Ques-8
+        function isPrime(num) {
+            for (let i = 2; i < num; i++)
+                if (num % i === 0)
+                    return false;
+            return num !== 1;
+        }
+
+        function findPrime() {
+            let primeNumbers = numbers.filter(isPrime);
+            document.getElementById("prime").innerHTML = "Prime Numbers: " + primeNumbers.join(", ");
+        }
+
+        // Ques-9
+        function doubleValues() {
+            let doubleNumbers = numbers.map(function (num) {
+                return num * 2;
+            });
+            document.getElementById("doubles").innerHTML = "Double Numbers: " + doubleNumbers.join(", ");
+        }
+
+        // Ques-10
+        function findFactors() {
+            let factors = numbers.filter(function (num) {
+                return num % 10 === 0;
+            });
+            document.getElementById("factors").innerHTML = "Factors of 10: " + factors.join(", ");
+        }
+    </script>
+</body>
+
+</html>

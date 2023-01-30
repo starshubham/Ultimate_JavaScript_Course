@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+</head>
+
+<body>
+    <!-- Q4: Print Three Ordered List with given 2D array.
+    const cars=[ [“BMW”,”Mercedes”,”Audi”,”Volkswagen”],[“Maruti”,"Mahindra”,”Tata Motors”] ,[“Kia”,”Hyundai”]]. -->
+
+    <ol id="list1"></ol>
+    <ol id="list2"></ol>
+    <ol id="list3"></ol>
+
+
+    <!-- Q5: Print given Array data in Table ( 3 rows, 3 cols). const data=[ [ 2,5,8], [1,4,7 ],[3,6,9 ] ]; -->
+    <table id="data" border="1" class="table table-bordered">
+    </table>
+
+    <script>
+        // Ques-4
+        const cars = [
+            ["BMW", "Mercedes", "Audi", "Volkswagen"],
+            ["Maruti", "Mahindra", "Tata Motors"],
+            ["Kia", "Hyundai"]
+        ];
+
+        for (var i = 0; i < cars.length; i++) {
+            var list = document.getElementById("list" + (i + 1));
+
+            for (var j = 0; j < cars[i].length; j++) {
+                var item = document.createElement("li");
+                item.innerHTML = cars[i][j];
+                list.appendChild(item);
+            }
+        }
+
+        // Ques-5
+        const data = [
+            [2, 5, 8],
+            [1, 4, 7],
+            [3, 6, 9]
+        ];
+
+        var table = document.getElementById("data");
+
+        for (var i = 0; i < data.length; i++) {
+            var row = table.insertRow(-1);
+            for (var j = 0; j < data[i].length; j++) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = data[i][j];
+            }
+        }
+    </script>
+</body>
+
+</html>

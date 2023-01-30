@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container">
+          <h1>JavaScript &#9975;</h1>
+          <p>Paragraph</p>
+          <button class="btn btn-info" onclick="alert('hello')">Click</button>
+     </div>
+<script>
+     "use strict";
+
+
+     let str="hello js";                                    // string
+     let num=22;                                            // number
+     let u;                                                 // undefined                                            
+     let t=true, f=false;                                   // boolean
+     let n=null;                                            // null
+     let bigInt=2n;                                         // BigInt
+     let sym=Symbol('s');                                   // Symbol
+
+
+     //const month=new Array();                               // array constructor
+     const month=["jan","feb","mar"];                         // array literal
+     //const car=new Object();                                // object constructor
+     const car={name:"swift",power:90};                       // object literal
+     function sayHi(){ return "hello"}                        // function declaration
+     let sayBye=function(){ return "bye"};                    // function expression
+     
+
+     //console.log(str);
+     //console.log(str.length);                                  // property
+     //console.log(str.toUpperCase());                           // method (build-in function)
+
+     //console.log( typeof str);
+     //console.log( typeof num);
+     //console.log( typeof t, typeof f);
+     //console.log( typeof u);
+     //console.log( typeof n);
+     //console.log( typeof month);
+     //console.log( typeof car);
+     //console.log( typeof sayHi);
+     //console.log( typeof sayBye);
+
+
+     //console.log(2+3);
+     //console.log(++num);                          // 23
+     //console.log(num++);                          // 22, after that its 23
+
+     //(num%2==0) ? console.log("even") : console.log("odd");
+
+
+     //console.log( 100 + "2" );                         // "1002"
+     //console.log( 100 - "2" );                         // 98
+     //console.log( 100 - "2x" );                        // NaN
+     //console.log( 1 + 2 + "3" + 1 + 2 );               // "3312"
+     //console.log( 1 + 2 + +"3" + 1 + 2 );               // 9
+     //console.log( 1 + 2 + "3" + (1 + 2) );             // "333"
+     //console.log( 2 + 3 * 4 );                         // 14
+     //console.log( "2" + 3 + 4  );                      // "234"
+     //console.log( +"2" + 3 + 4  );                      // 9
+
+
+     //num+=10;                                     // 32, num= num+10
+
+     {
+          let balance=1000;
+          let int=40;
+          balance+=int;
+          //   console.log(balance);
+     }
+
+
+     //console.log( 2=="2" );                             // value only
+     //console.log( 2==="2" );                            // value & datatype
+
+     let x=3, y=4;
+     let template=`<div class="panel">
+          This is output
+          </div>`;
+
+     
+
+     //console.log("sum of "+x+" and "+y+" is "+(x+y));
+     //console.log(`Sum of ${x} and ${y} and ${x+y}`);
+     
+     
+     //console.log(str.length);
+     //console.log(str["length"]);
+     //console.log(str.toUpperCase());
+     //console.log(str["toUpperCase"]());
+     
+    //console.log(Number("100"));
+     //console.log(Number("100.5"));
+     //console.log(+("100.5"));
+     
+     //console.log(parseInt("12"));              // 12
+     //console.log(parseInt("12px"));              // 12
+     //console.log(parseFloat("12.34"));              // 12.34
+
+     //console.log(parseInt("100"));                     // 100
+     //console.log(parseInt("100",10));                  // 100
+     //console.log(parseInt("100",2));                   // 4
+     //console.log(parseInt("100",8));                   // 64
+     //console.log(parseInt("100",16));                   // 256
+     //console.log(parseInt("100",32));                   // 1024
+     
+
+
+     console.log( isNaN(100) );
+     console.log( isNaN(true) );              // false
+     console.log( isNaN("100"));
+     console.log( isNaN("100px"));               // true
+     console.log( isNaN(NaN));                  // true
+
+
+     console.log( isFinite(1.8e308) );
+     console.log( isFinite(1.7e308) );
+     console.log( Number.isFinite(true) );   // false
+     console.log( Number.isFinite(1) );     // 1
+
+
+</script>   
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+     <div class="container">
+          <h1>JavaScript</h1>
+          <div class="row g-3 align-items-center">
+               <div class="col-auto">
+                 <label for="age" class="col-form-label">Age</label>
+               </div>
+               <div class="col-auto">
+                 <input type="number" id="age" min="0" max="100" class="form-control">
+               </div>
+               <div class="col-auto">
+                 <button class="btn btn-primary" onclick="output.textContent=checkMarks(age.value)">Check</button>
+               </div>
+               <div class="col-auto"><p id="output"></p></div>
+             </div>
+     </div>
+<script>
+     "use strict";
+
+     let x=4;
+
+     // ( x%2==0 ) ? console.log("even") : console.log("odd") ;
+
+     if( x%2==0){
+          console.log("even")
+     }
+     else{
+          console.log("odd")
+     }
+
+     // function factorial(x){
+     //      if( x==1 ){ return 1}
+     //      else{ return x * factorial(x-1);}
+     // }
+     
+     // feature detection  
+     if(navigator.getBattery){
+         // navigator.getBattery().then(i=>console.log(i.level*100));
+     }
+     else{
+          console.log("Battery API not supported");
+     }
+
+     //  
+
+     x=0;
+
+     if(x==0){ console.log("zero")}
+     else if(x>0){ console.log("positive")}
+     else if(x<0){ console.log("negative");}
+     else{ console.log("not a number");}
+
+     
+     let marks="ddd";                                //  Sci >=60, comm >=50, arts, >=40,  
+
+     // if(marks>=60){ console.log("Science");}
+     // if(marks>=50){ console.log("Commerce");}
+     // if(marks>=40){ console.log("Arts");}
+     // else{ console.log("not eligible"); }
+     
+     function checkMarks(marks){
+          if( isNaN(marks) ){
+               return ("not a number");
+          }
+          else{
+               if(marks>=60){ return ("Science");}
+               if(marks>=50){ return ("Commerce");}
+               if(marks>=40){ return ("Arts");}
+               else{ return ("not eligible"); }
+          }
+     }
+
+     // switch
+     console.clear()
+     
+     let day="3";
+
+     // if( day==1 ){ console.log("sun");}
+     // else if( day==2 ){ console.log("mon");}
+     // else if( day==3 ){ console.log("tue");}
+
+     switch(day){
+          case 1: case "1": console.log("sun"); break;
+          case 2: case "2": console.log("mon"); break;
+          case 3: case "3": console.log("tues"); break;
+          default : console.warn("invalid day");
+     }
+
+
+
+    try{
+          navigator.getBattery().then(i=>console.log(i.level*100));
+     }
+    catch(err){
+          console.error(err);
+    }
+
+    let age=-33;
+    try{
+          if(isNaN(age)){ throw new Error("Not a number") }
+          if( age<0 || age>125){ throw new Error("age not in range") }
+    }
+//     catch(err){
+//           console.error(err);
+//     }
+    finally{
+     console.log(`Age is ${age}`);
+    }
+
+
+    console.log("app running");
+</script>   
+</body>
+</html>

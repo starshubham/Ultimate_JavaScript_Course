@@ -5,32 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather Api</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+        integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
-        #city-form {
-            padding: 20px;
-            background-color: #f2f2f2;
+        .form-inline .form-control {
+            display: inline-block;
+            width: auto;
+            vertical-align: middle;
         }
 
-        #city-input {
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
+        .form-control {
+            font-size: 14px;
+            line-height: 1.428571429;
+            color: #333;
         }
     </style>
 </head>
@@ -38,28 +29,24 @@
 <body>
 
     <!-- Get the weather of city using wheater map api -->
-    <script src="script.js"></script>
-    <form id="city-form">
-        <label for="city-input">City:</label>
-        <input type="text" id="city-input" name="city">
-        <button type="submit">Submit</button>
+    <form class="form-inline" name="cities">
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" required minlength="3" pattern="^[a-z]{1}[a-z]{1,}$" class="form-control" id="city"
+                placeholder="Enter City" name="city">
+            <button type="submit" class="btn btn-primary">Check</button>
+        </div>
+        <div class="form-group"><span class="result"></span></div>
     </form>
 
-    <table id="weather-table"></table>
-    </table>
     <script>
 
-
-        const cityForm = document.getElementById('city-form');
-        cityForm.addEventListener('submit', (e) => {
+        document.cities.addEventListener("submit", function (e) {
             e.preventDefault();
-            const city = document.getElementById('city-input').value;
-            //console.log(city);
-            //var city = document.getElementById("city").value;
+            var city = this.city.value;
             var apiKey = "7a56188149a1f613f4c3a9052f3d73e3";
 
-
-            var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+            apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
 
             fetch(apiUrl)
                 .then(response => response.json())
@@ -67,24 +54,19 @@
                     // do something with the data
                     console.log(data)
                 });
-            let waetherApiurl = "https://weather-map-api.com/forecast?q=" + city;
-            fetch(waetherApiurl)
-                .then(response => response.json())
-                .then(data => {
-                    // Get the table element
-                    let table = document.getElementById("weather-table");
-                    // Iterate over the data and create rows
-                    data.forecast.forEach(day => {
-                        let row = table.insertRow();
-                        let dateCell = row.insertCell();
-                        let tempCell = row.insertCell();
-                        let conditionCell = row.insertCell();
-                        dateCell.innerHTML = day.date;
-                        tempCell.innerHTML = day.temp;
-                        conditionCell.innerHTML = day.condition;
-                    });
-                });
-        });
+
+            fetch(apiUrl).then(i => i.json()).then(i => {
+
+                if (i.cod != 404) {
+                    document.querySelector(".result").innerHTML = `Current Temperature at ${city} is ` + (i.main.temp - 273.15).toFixed(1) + " &deg;C";
+                }
+                else {
+                    document.querySelector(".result").innerHTML = "No City Found";
+                }
+            })
+
+        })
+
     </script>
 </body>
 

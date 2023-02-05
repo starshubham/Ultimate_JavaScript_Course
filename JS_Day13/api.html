@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer"> 
+</head>
+<body>
+    <div class="container-lg">
+        <h1>HTML5 API</h1>
+        <form action="" class="my-3" name="search">
+            <input type="search" name="query" required> <span></span>
+        </form>
+        <button class="btn btn-success geo">Get Location</button>
+        <button class="btn btn-danger stop">Stop Tracing</button>
+        <span class="lead"></span>
+       <table class="table table-bordered my-3">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Latitude</th>
+                    <td class="lat"></td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td class="lon"></td>
+                </tr>
+                <tr>
+                    <th>Accuracy</th>
+                    <td class="acc"></td>
+                </tr>
+            </tbody>
+       </table>
+    </div>
+<script>
+    "use strict";
+
+    document.querySelector(".geo").addEventListener("click",function(){
+
+        //navigator.geolocation.getCurrentPosition(i=>{
+        const x=navigator.geolocation.watchPosition(i=>{
+            console.log(i);
+
+            let n="North", e="East";
+            if( i.coords.latitude<0){ n="South" }
+            if( i.coords.longitude<0){ e="west" }
+
+            document.querySelector(".lat").innerHTML=i.coords.latitude+"&deg;"+n;
+            document.querySelector(".lon").innerHTML=i.coords.longitude+"&deg;"+e;
+            document.querySelector(".acc").innerHTML=i.coords.accuracy+"m";
+            document.querySelector("span.lead").textContent="Location watching";
+            
+        },j=>{
+            document.querySelector("span.lead").textContent=j.message;
+        });
+
+        document.querySelector(".stop").addEventListener("click",function(){
+            navigator.geolocation.clearWatch(x);
+            document.querySelector("span.lead").textContent="Location not tracing";
+        })
+    });    
+
+
+    document.search.addEventListener("submit",function(e){
+        e.preventDefault();
+        console.log(this.query.value);
+        
+        this.query.nextElementSibling.innerHTML=this.query.value;
+
+    })
+  
+</script>    
+</body>
+</html>

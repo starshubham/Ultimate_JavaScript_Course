@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          .btn:disabled{ pointer-events: initial;cursor: not-allowed;}
+          .loader{ top: 200px; display: none; }
+     </style>
+</head>
+<body>
+     <div class="container">
+          <header class="bg-light p-3">
+               <h1>JavaScript </h1>
+               <form action="" class="row">
+                    <div class="col-auto"><input type="search" class="form-control" required pattern="^[a-z]{3,}$"></div>
+                    <div class="col-auto"><button class="btn btn-info">Search</button></div>
+               </form>
+          </header>
+          <nav class="bg-info p-2">
+               <a href="api.html">API</a>
+               <a href="clock.html">Clock</a>
+          </nav>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+               <div class="row">
+                    <div class="col-auto"><input type="text" class="form-control x1"></div>
+                    <div class="col-auto"><span class="lead x2"></span></div>
+               </div>
+               <h2>Form validation</h2>
+               <form action="" class="my-3" name="contact" novalidate>
+                    <div class="row">
+                         <div class="col-auto"><label>Name: <input type="text" name="name" class="form-control" required> <span class="position-absolute text-danger"></span> </label></div>
+                         <div class="col-auto"><label>Age: <input type="number" name="age" class="form-control" required> <span class="position-absolute text-danger"></span></label></div>
+                         <div class="col-auto">Gender: <label class="mt-4"><input type="radio" name="gender" required> Female</label> <label><input type="radio" name="gender" required> Male</label> <br> <span class="position-absolute text-danger e1"></span> </div>
+                         <div class="col-auto"><label>Resume: <input type="file" name="resume" accept=".pdf"  class="form-control" required> <span class="position-absolute text-danger"></span></label></div>
+                         <div class="col-auto"><button class="btn btn-danger mt-4">Send</button></div>
+                    </div>
+               </form>
+          </main>
+          <footer class="bg-info p-3">
+               <p>Footer</p>
+          </footer>
+     </div>
+
+<!-- <script src="ext.js"></script>      -->
+<script>
+     "use strict";
+     const pi=Math.PI;
+     //console.log(pi);
+
+     //Math.max(1,7,3);
+
+     //console.log( Math.sin(30) );
+     //console.log( Math.sin(30 * Math.PI/180 ) );
+
+     //console.log( Math.random() );
+     //console.log( Math.ceil(Math.random()*6) );
+     //const otp=Math.floor(Math.random()*9) +""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9);
+
+     //console.assert(1==true);
+
+
+
+     //document.cookie="name=avi";                  // session based
+     //document.cookie="city=noida";                // session based
+     //document.cookie="pin=201301; expires=Sun, 04 Feb 2023 12:00:00 GMT";        // time based
+     document.cookie="location=sec 15; max-age=2592000";                           // 1 month 
+
+     const cookiedata={};
+     if( document.cookie.length!=0){
+          document.cookie.split("; ").forEach(i=>{
+               let key=i.split("=")[0];
+               let val=i.split("=")[1];
+               cookiedata[key]=val;
+          })
+     };
+
+     function changeHistory(){
+          var state={ "page":"page1", "id":"id1"};
+          var title="new title";
+          var url="test.html";
+
+          history.pushState( state, title, url);    
+     };
+
+
+     {
+          let str="abcD";
+          //let patt=new RegExp();
+          //let patt=/d/;                     // d character
+          //let patt=/d/i;                     // d or D character
+          let patt=/\d/;                     // digit
+           
+          if( patt.test(str) ){
+               console.log("match");
+          }
+          else{
+               console.log("no match");
+          }
+     }
+
+     document.querySelector(".x1").addEventListener("input",function(){
+          let val=this.value;
+          //let patt=/[0-9]{4}/;
+          //let patt=/^[0-9]{4}$/;                     // atm pin
+          //let patt=/^[6-9]{1}[0-9]{9}$/;               // mobile
+          //let patt=/^[a-z0-9]{1}[a-z0-9._]{0,}\@[a-z0-9]{1}[a-z0-9-]{0,}\.[a-z]{2}[a-z.]{0,8}$/i;               
+          let patt=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$])(?=.{8,12})/;
+
+          if( patt.test(val) ){
+               document.querySelector(".x2").innerHTML=("match");
+          }
+          else{
+               document.querySelector(".x2").innerHTML=("no match");
+          }
+          
+
+     });
+
+
+     document.contact.addEventListener("submit",function(e){
+          this.name.nextElementSibling.textContent="";
+          this.age.nextElementSibling.textContent="";
+          document.querySelector(".e1").textContent=""
+
+          if(this.name.value.trim()==""){
+               e.preventDefault();
+               this.name.nextElementSibling.textContent="Enter Name";
+               this.name.focus();
+          }
+          else  if(this.age.value.trim()==""){
+               e.preventDefault();
+               this.age.nextElementSibling.textContent="Enter Age";
+               this.age.focus();
+          }
+          else  if(this.age.value.trim()==""){
+               e.preventDefault();
+               this.age.nextElementSibling.textContent="Enter Age";
+               this.age.focus();
+          }
+          else  if(this.gender[0].checked==false && this.gender[1].checked==false){
+               e.preventDefault();
+               document.querySelector(".e1").textContent="Choose Gender";
+          
+          }
+          else  if(this.resume.value==""){
+               e.preventDefault();
+               this.resume.nextElementSibling.textContent="Choose File";
+               this.resume.focus();
+          }
+          else  if(this.resume.files[0].size>=(1024*500)){
+               e.preventDefault();
+               this.resume.nextElementSibling.textContent=" File too large";               
+          }
+
+
+     })
+
+
+
+
+      
+</script>  
+
+<script type="module">
+//import area from './module.js';                   // single import
+import {area} from './module.js';                   // single import
+     
+//console.log( area())
+
+</script>
+</body>
+</html>

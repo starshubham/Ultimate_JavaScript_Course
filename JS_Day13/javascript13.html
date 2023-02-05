@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <style>
+          .btn:disabled{ pointer-events: initial;cursor: not-allowed;}
+          .loader{ top: 200px; display: none; }
+          canvas{ box-shadow: 0 0 5px gray;}
+     </style>
+</head>
+<body>
+     <div class="container-lg">
+          <header class="bg-light p-3">
+               <h1>JavaScript API </h1>
+               <form action="" class="row">
+                    <div class="col-auto"><input type="search" class="form-control" required pattern="^[a-z]{3,}$"></div>
+                    <div class="col-auto"><button class="btn btn-info">Search</button></div>
+               </form>
+          </header>
+          <nav class="bg-info p-2">
+               <a href="api.html">API</a>
+               <a href="clock.html">Clock</a>
+          </nav>
+          <main class="bg-white p-3">
+               <h2>Main</h2>
+               <canvas width="400" height="300"></canvas>
+               <div class="row">
+                    <div class="col-lg-6"><h2>Bar Chart 1</h2><canvas id="c1"></canvas></div>
+                    <div class="col-lg-6"><h2>Bar Chart 2</h2><canvas id="c2"></canvas></div>
+               </div>
+          </main>
+          <footer class="bg-info p-3">
+               <p>Footer</p>
+          </footer>
+     </div>
+
+<!-- <script src="ext.js"></script>      -->
+<script>
+     "use strict";
+
+     const canvas=document.querySelector("canvas");
+     const ctx=canvas.getContext("2d");
+
+     const grad=ctx.createLinearGradient(0,0,canvas.width,0);
+     grad.addColorStop(0,"#ddd");
+     grad.addColorStop(1,"#aaa");
+     ctx.fillStyle=grad;
+     ctx.fillRect(0,0,canvas.width,canvas.height)
+
+     ctx.moveTo(0,0);
+     ctx.lineTo(canvas.width/2, canvas.height/2);
+     ctx.lineTo(canvas.width, 0);
+     ctx.lineTo(0,0);
+     ctx.fillStyle="#fcf";
+     ctx.fill()
+     ctx.stroke();
+
+     ctx.beginPath();
+     const grd=ctx.createRadialGradient(canvas.width/2,canvas.height/2,20,canvas.width/2,canvas.height/2,100);
+     grd.addColorStop(0,"red");
+     grd.addColorStop(0.5,"orange");
+     grd.addColorStop(1,"skyblue");
+         
+     let r=0;
+
+     function changeRad(){
+          r++;
+         
+          if(r>=100){ 
+               cancelAnimationFrame(changeRad);
+          }
+          else{
+               ctx.arc(canvas.width/2,canvas.height/2,r,0,2*Math.PI);
+               ctx.stroke();
+               ctx.fillStyle=grd;
+               ctx.fill();
+               requestAnimationFrame(changeRad);
+          }
+     }
+
+     changeRad();
+   
+     ctx.closePath();
+
+</script>  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+     const ctx1 = document.querySelector('#c1');
+     
+     new Chart(ctx1, {
+     type: 'bar',
+     data: {
+     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+     datasets: [{
+          label: 'Car Sales 2022',
+          data: [12, 19, 13, 15, 12, 13],
+          borderWidth: 1
+     }]
+     },
+     options: {
+     scales: {
+          y: {
+               beginAtZero: true
+          }
+     }
+     }
+     });
+     const ctx2 = document.querySelector('#c2');
+     
+     new Chart(ctx2, {
+     type: 'line',
+     data: {
+     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+     datasets: [{
+          label: 'Car Sales 2022',
+          data: [12, 19, 13, 15, 12, 13],
+          borderWidth: 1
+     },
+     {
+          label: 'Car Sales 2021',
+          data: [11, 16, 15, 17, 11, 12],
+          borderWidth: 1
+     }
+     ]
+     },
+     options: {
+     scales: {
+          y: {
+               beginAtZero: true
+          }
+     }
+     }
+     });
+
+</script>
+</body>
+</html>

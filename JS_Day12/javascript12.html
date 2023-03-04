@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>JavaScript</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" >
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css"
+          integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
      <style>
-          .btn:disabled{ pointer-events: initial;cursor: not-allowed;}
-          .loader{ top: 200px; display: none; }
+          .btn:disabled {
+               pointer-events: initial;
+               cursor: not-allowed;
+          }
+
+          .loader {
+               top: 200px;
+               display: none;
+          }
      </style>
 </head>
+
 <body>
      <div class="container">
           <header class="bg-light p-3">
                <h1>JavaScript </h1>
                <form action="" class="row">
-                    <div class="col-auto"><input type="search" class="form-control" required pattern="^[a-z]{3,}$"></div>
+                    <div class="col-auto"><input type="search" class="form-control" required pattern="^[a-z]{3,}$">
+                    </div>
                     <div class="col-auto"><button class="btn btn-info">Search</button></div>
                </form>
           </header>
@@ -33,10 +45,17 @@
                <h2>Form validation</h2>
                <form action="" class="my-3" name="contact" novalidate>
                     <div class="row">
-                         <div class="col-auto"><label>Name: <input type="text" name="name" class="form-control" required> <span class="position-absolute text-danger"></span> </label></div>
-                         <div class="col-auto"><label>Age: <input type="number" name="age" class="form-control" required> <span class="position-absolute text-danger"></span></label></div>
-                         <div class="col-auto">Gender: <label class="mt-4"><input type="radio" name="gender" required> Female</label> <label><input type="radio" name="gender" required> Male</label> <br> <span class="position-absolute text-danger e1"></span> </div>
-                         <div class="col-auto"><label>Resume: <input type="file" name="resume" accept=".pdf"  class="form-control" required> <span class="position-absolute text-danger"></span></label></div>
+                         <div class="col-auto"><label>Name: <input type="text" name="name" class="form-control"
+                                        required> <span class="position-absolute text-danger"></span> </label></div>
+                         <div class="col-auto"><label>Age: <input type="number" name="age" class="form-control"
+                                        required> <span class="position-absolute text-danger"></span></label></div>
+                         <div class="col-auto">Gender: <label class="mt-4"><input type="radio" name="gender" required>
+                                   Female</label> <label><input type="radio" name="gender" required> Male</label> <br>
+                              <span class="position-absolute text-danger e1"></span>
+                         </div>
+                         <div class="col-auto"><label>Resume: <input type="file" name="resume" accept=".pdf"
+                                        class="form-control" required> <span
+                                        class="position-absolute text-danger"></span></label></div>
                          <div class="col-auto"><button class="btn btn-danger mt-4">Send</button></div>
                     </div>
                </form>
@@ -46,132 +65,234 @@
           </footer>
      </div>
 
-<!-- <script src="ext.js"></script>      -->
-<script>
-     "use strict";
-     const pi=Math.PI;
-     //console.log(pi);
+     <!-- <script src="ext.js"></script>      -->
 
-     //Math.max(1,7,3);
+     <!-- JavaScript Math Object:- JavaScript Math Object is a build-in Object used to get Mathematical  Properties, Mathematical constants and Maths methods like PI, sinθ, random number, Square root, power etc. -->
+     <script>
+          "use strict";
+          // Mathematical Constants: JavaScript supports Eight Properties to get Maths Constants
+          const m = Math;              // return math object    
+          const pi = m.PI;             // return value of pie
+          Math.SQRT2                   // square root of 2
+          Math.SQRT1_2                 // reciprocal of square root of 2, i.e, 1 divided by square root of 2   
+          console.log(m);
+          console.log(pi);
 
-     //console.log( Math.sin(30) );
-     //console.log( Math.sin(30 * Math.PI/180 ) );
+          // Math.abs() method returns the positive value of given number.
+          Math.abs(2);                // return 2
+          Math.abs(-2);               // return 2
+          Math.abs(0);                // return 0
 
-     //console.log( Math.random() );
-     //console.log( Math.ceil(Math.random()*6) );
-     //const otp=Math.floor(Math.random()*9) +""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9);
+          // Math.ceil() method will round a number up to next integer.
+          Math.ceil(2.3);                // return 3
+          Math.ceil(1.9);                 // return 2
+          Math.ceil(2);                   // return 2
 
-     //console.assert(1==true);
+          // Math.ceil() method will round a number down to next integer.
+          Math.floor(2.3);                // return 2
+          Math.floor(1.9);                 // return 1
+          Math.floor(2);                   // return 2
+
+          // Math.round() method will round a number to nearest integer. 
+          Math.round(2.3);                 // return 2
+          Math.round(1.9);                 // return 2
+          Math.round(2);                   // return 2
+
+          // Math.exp() method will raise a number to the power of Eular's Constant
+          Math.exp(1);                 // return 2.718281828459045
+          Math.exp(0);                 // return 1
+
+          // Math.pow() method will raise any no (1st argument ) to power of (2nd argument ).
+          Math.pow(2, 3);                 // return 8
+          Math.pow(3, 4);                 // return 81
+
+          // Math.sqrt() method will return the square root of a number.
+          Math.sqrt(4);                   // return 2
+          Math.sqrt(81);                  // return 9
+
+          // Math.cbrt() method will return the cube root of a number.
+          Math.cbrt(27);                  // return 3
+
+          // Math.log() method will return the natural logarithm of a number.
+          Math.log(1);                   // return 0
+          Math.log(2);                   // return 0.6931471805599453
+          Math.log(Math.E);              // return 1
+
+          // Math.max() method will return the maximum number from given arguments.
+          Math.max(1,7,3);                   // return 7
+
+          // Math.min() method will return the minimum number from given arguments.
+          Math.min(6,2,3);                   // return 2
+
+          // Trigonometry functions are also used in javascript to work with geometrical objects. JavaScript supports all trigonometry like, sin, cos, tan etc.
+
+          // Math.sin() method is used return sine of angle.
+          // The default unit is radians, i.e PI.
+          // To get sine of deg, use (radian * Math.PI/180).
+          Math.sin(90);                // 0.8939966636005579    
+          Math.sin(90 * Math.PI/180);    // 1         
+          Math.sin(30 * Math.PI/180);    // 0.49999999999999994   
+
+          // Math.cos() method is used return cosine of angle.
+          Math.cos(0);                // 1
+          Math.cos(30);               // 0.15425144988758405
+
+          // Math.tan() method is used return tangent of angle.
+          Math.tan(30);                // -6.405331196646276
+          Math.tan(45);                // 1.6197751905438615
+          Math.tan(45 * Math.PI/180)    // 0.9999999999999999
+
+          // To get cosec, sec and cot, divide sin, sec or tan by 1. exp
+          // cosec(30) = 1/(Math.sin(30*Math.PI/180))
+          // sec(45) = 1/(Math.cos(45*Math.PI/180))
+          // cot(60) = 1/(Math.tan(60*Math.PI/180))
+
+          // Math.random() method is used to get any random number between 0 and 1.
+          Math.random();        // any random no between 0 to 1 
+
+          // To get random number between 0 and any other number, multiply Math.random() with the same number.
+          Math.random()*10;        // any random no between 0 to 10
+          Math.random()*100;        // any random no between 0 to 100
+
+          // To get random integer, use Math.floor(Math.random).
+          Math.floor(Math.random()*10);      // Generate Int no between 0 to 10
+
+          // Build a DICE
+          Math.ceil(Math.random()*6);                         // 1-6        
+          Math.floor(Math.random()*6+1);                      // 1-6
+
+          // Generate a 4 digit OTP
+          const otp=Math.floor(Math.random()*9) +""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9)+""+Math.floor(Math.random()*9);
+
+          // JavaScript Console or Browser console is build-in object in JavaScript which gives access to browser debugging console. console can be used to print output, check errors and warnings in console.
+
+          // console.log is used to print output in browser console. We can print string or any others datatype.
+          // console is build-in object and log is method of console.
+
+          // Placeholder in console:- We can also use Placeholder like %s, %d to insert string or numbers.
+          var name="Tech Altum";         
+          console.log("Name is %s",name);         // String Placeholder
+
+          var id=12;         
+          console.log("Id is %d",id);             // Number Placeholder
+
+          //console.assert(1==true);
 
 
 
-     //document.cookie="name=avi";                  // session based
-     //document.cookie="city=noida";                // session based
-     //document.cookie="pin=201301; expires=Sun, 04 Feb 2023 12:00:00 GMT";        // time based
-     document.cookie="location=sec 15; max-age=2592000";                           // 1 month 
+          //document.cookie="name=avi";                  // session based
+          //document.cookie="city=noida";                // session based
+          //document.cookie="pin=201301; expires=Sun, 04 Feb 2023 12:00:00 GMT";        // time based
+          document.cookie = "location=sec 15; max-age=2592000";                           // 1 month 
 
-     const cookiedata={};
-     if( document.cookie.length!=0){
-          document.cookie.split("; ").forEach(i=>{
-               let key=i.split("=")[0];
-               let val=i.split("=")[1];
-               cookiedata[key]=val;
+          const cookiedata = {};
+          if (document.cookie.length != 0) {
+               document.cookie.split("; ").forEach(i => {
+                    let key = i.split("=")[0];
+                    let val = i.split("=")[1];
+                    cookiedata[key] = val;
+               })
+          };
+
+          function changeHistory() {
+               var state = { "page": "page1", "id": "id1" };
+               var title = "new title";
+               var url = "test.html";
+
+               history.pushState(state, title, url);
+          };
+
+
+          {
+               let str = "abcD";
+               //let patt=new RegExp();
+               //let patt=/d/;                     // d character
+               //let patt=/d/i;                     // d or D character
+               let patt = /\d/;                     // digit
+
+               if (patt.test(str)) {
+                    console.log("match");
+               }
+               else {
+                    console.log("no match");
+               }
+          }
+
+          document.querySelector(".x1").addEventListener("input", function () {
+               let val = this.value;
+               //let patt=/[0-9]{4}/;
+               //let patt=/^[0-9]{4}$/;                     // atm pin
+               //let patt=/^[6-9]{1}[0-9]{9}$/;               // mobile
+               //let patt=/^[a-z0-9]{1}[a-z0-9._]{0,}\@[a-z0-9]{1}[a-z0-9-]{0,}\.[a-z]{2}[a-z.]{0,8}$/i;               
+               let patt = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$])(?=.{8,12})/;
+
+               if (patt.test(val)) {
+                    document.querySelector(".x2").innerHTML = ("match");
+               }
+               else {
+                    document.querySelector(".x2").innerHTML = ("no match");
+               }
+
+
+          });
+
+
+          document.contact.addEventListener("submit", function (e) {
+               this.name.nextElementSibling.textContent = "";
+               this.age.nextElementSibling.textContent = "";
+               document.querySelector(".e1").textContent = ""
+
+               if (this.name.value.trim() == "") {
+                    e.preventDefault();
+                    this.name.nextElementSibling.textContent = "Enter Name";
+                    this.name.focus();
+               }
+               else if (this.age.value.trim() == "") {
+                    e.preventDefault();
+                    this.age.nextElementSibling.textContent = "Enter Age";
+                    this.age.focus();
+               }
+               else if (this.age.value.trim() == "") {
+                    e.preventDefault();
+                    this.age.nextElementSibling.textContent = "Enter Age";
+                    this.age.focus();
+               }
+               else if (this.gender[0].checked == false && this.gender[1].checked == false) {
+                    e.preventDefault();
+                    document.querySelector(".e1").textContent = "Choose Gender";
+
+               }
+               else if (this.resume.value == "") {
+                    e.preventDefault();
+                    this.resume.nextElementSibling.textContent = "Choose File";
+                    this.resume.focus();
+               }
+               else if (this.resume.files[0].size >= (1024 * 500)) {
+                    e.preventDefault();
+                    this.resume.nextElementSibling.textContent = " File too large";
+               }
+
+
           })
-     };
-
-     function changeHistory(){
-          var state={ "page":"page1", "id":"id1"};
-          var title="new title";
-          var url="test.html";
-
-          history.pushState( state, title, url);    
-     };
-
-
-     {
-          let str="abcD";
-          //let patt=new RegExp();
-          //let patt=/d/;                     // d character
-          //let patt=/d/i;                     // d or D character
-          let patt=/\d/;                     // digit
-           
-          if( patt.test(str) ){
-               console.log("match");
-          }
-          else{
-               console.log("no match");
-          }
-     }
-
-     document.querySelector(".x1").addEventListener("input",function(){
-          let val=this.value;
-          //let patt=/[0-9]{4}/;
-          //let patt=/^[0-9]{4}$/;                     // atm pin
-          //let patt=/^[6-9]{1}[0-9]{9}$/;               // mobile
-          //let patt=/^[a-z0-9]{1}[a-z0-9._]{0,}\@[a-z0-9]{1}[a-z0-9-]{0,}\.[a-z]{2}[a-z.]{0,8}$/i;               
-          let patt=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$])(?=.{8,12})/;
-
-          if( patt.test(val) ){
-               document.querySelector(".x2").innerHTML=("match");
-          }
-          else{
-               document.querySelector(".x2").innerHTML=("no match");
-          }
-          
-
-     });
-
-
-     document.contact.addEventListener("submit",function(e){
-          this.name.nextElementSibling.textContent="";
-          this.age.nextElementSibling.textContent="";
-          document.querySelector(".e1").textContent=""
-
-          if(this.name.value.trim()==""){
-               e.preventDefault();
-               this.name.nextElementSibling.textContent="Enter Name";
-               this.name.focus();
-          }
-          else  if(this.age.value.trim()==""){
-               e.preventDefault();
-               this.age.nextElementSibling.textContent="Enter Age";
-               this.age.focus();
-          }
-          else  if(this.age.value.trim()==""){
-               e.preventDefault();
-               this.age.nextElementSibling.textContent="Enter Age";
-               this.age.focus();
-          }
-          else  if(this.gender[0].checked==false && this.gender[1].checked==false){
-               e.preventDefault();
-               document.querySelector(".e1").textContent="Choose Gender";
-          
-          }
-          else  if(this.resume.value==""){
-               e.preventDefault();
-               this.resume.nextElementSibling.textContent="Choose File";
-               this.resume.focus();
-          }
-          else  if(this.resume.files[0].size>=(1024*500)){
-               e.preventDefault();
-               this.resume.nextElementSibling.textContent=" File too large";               
-          }
-
-
-     })
 
 
 
 
-      
-</script>  
 
-<script type="module">
-//import area from './module.js';                   // single import
-import {area} from './module.js';                   // single import
-     
-//console.log( area())
+     </script>
 
-</script>
+     <!-- JavaScript Modules -->
+     <script type="module">
+          // import area from './module.js';                   // single import with default
+          // area()
+
+          // import { area1 } from './module.js';               // single import (funtion import) without default
+          // area1()
+
+          // import { x, age, pi } from './module.js';              // multiple import
+          // console.log(`Value of x is ${x} \nThe age is ${age} \nThe value of pi is ${pi}`);
+
+     </script>
 </body>
+
 </html>
